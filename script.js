@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
   Project: Guess My Number
@@ -29,52 +29,64 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highScore = 0;
 
+let elementCheck = document.querySelector(".check");
+let elementScore = document.querySelector(".score");
+let elementGuess = document.querySelector(".guess");
+let elementMessage = document.querySelector(".message");
+let elementNumber = document.querySelector(".number");
+let elementBody = document.querySelector("body");
+let elementHighScore = document.querySelector(".highscore");
+let elementAgain = document.querySelector(".again");
+
 // Refactored by Victor Hugo Aguiar: Added elementSelector parameter for versatile use throughout the code.
 const displayText = (elementSelector, message) => {
-  document.querySelector(elementSelector).textContent = message;
+  elementSelector.textContent = message;
 };
 
 // Added by Victor Hugo Aguiar: Encapsulates logic to update the game score, enhancing code modularity and readability
 const updateScore = () => {
   score--;
-  displayText('.score', score);
+  displayText(elementScore, score);
 };
 
-document.querySelector('.check').addEventListener('click', () => {
-  const guess = Number(document.querySelector('.guess').value);
+elementCheck.addEventListener("click", () => {
+  const guess = Number(elementGuess.value);
 
   if (!guess) {
-    displayText('.message', '⛔ No number!');
+    displayText(elementMessage, "⛔ No number!");
   } else if (guess === secretNumber) {
-    displayText('.message', '🎯 Correct number!');
-    displayText('.number', secretNumber);
+    displayText(elementMessage, "🎯 Correct number!");
+    displayText(elementNumber, secretNumber);
 
-    document.querySelector('body').style.backgroundColor = '#60b347';
-    document.querySelector('.number').style.width = '30rem';
+    elementBody.style.backgroundColor = "#60b347";
+    elementNumber.style.width = "30rem";
 
     if (score > highScore) {
       highScore = score;
-      displayText('.highscore', highScore);
+      displayText(elementHighScore, highScore);
     }
   } else {
     if (score > 1) {
-      displayText('.message', guess > secretNumber ? '⬆ Too high!' : '⬇ Too low!');
+      displayText(
+        elementMessage,
+        guess > secretNumber ? "⬆ Too high!" : "⬇ Too low!"
+      );
       updateScore();
     } else {
-      document.querySelector('body').style.backgroundColor = '#d9534f';
-      displayText('.message', '💥 You lost');
-      displayText('.score', 0);
+      elementBody.style.backgroundColor = "#d9534f";
+      displayText(elementMessage, "💥 You lost");
+      displayText(elementScore, 0);
     }
   }
 });
 
-document.querySelector('.again').addEventListener('click', () => {
+elementAgain.addEventListener("click", () => {
   score = 20;
-  displayText('.score', score);
+  displayText(elementScore, score);
   secretNumber = Math.trunc(Math.random() * 20) + 1;
-  displayText('.message', 'Start guessing...');
-  displayText('.number', '?');
-  document.querySelector('.number').style.width = '15rem';
-  document.querySelector('.guess').value = null;
-  document.querySelector('body').style.backgroundColor = '#222';
+  displayText(elementMessage, "Start guessing...");
+  displayText(elementNumber, "?");
+  elementNumber.style.width = "15rem";
+  elementGuess.value = null;
+  elementBody.style.backgroundColor = "#222";
 });
