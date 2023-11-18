@@ -22,8 +22,8 @@ This JavaScript project represents my first venture into web development, showca
 - **Original App:** Udemy's "The Complete JavaScript Course 2024: From Zero to Expert!" by Jonas Schmedtmann
 - **Author:** Victor Hugo Santos Aguiar (@vhugoaguiar)
 
-## Portfolio Note
+## Author's Note
 
-This project is part of my portfolio as a professional web developer, showcasing my proficiency in JavaScript, DOM manipulation, and code optimization.
+This JavaScript project represents my initial steps in web development and marks the beginning of my journey to become a proficient web developer, showcasing my skills in JavaScript, DOM manipulation, and code optimization.
 
 Feel free to explore the codebase, provide feedback, and enjoy playing the game!
